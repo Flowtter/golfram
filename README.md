@@ -1,6 +1,6 @@
 # Golfram
 Golfram is a software that can do quick maths in go !
-It is inspired on : [Wolfram Alpha](https://www.wolframalpha.com/)
+It is inspired by : [Wolfram Alpha](https://www.wolframalpha.com/)
 
 ## Get started
 
