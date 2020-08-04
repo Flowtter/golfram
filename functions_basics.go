@@ -23,6 +23,7 @@ func split(r rune) bool {
 	return r == '+' || r == '-' || r == '*' || r == '/'
 }
 
+/*
 func slicerSymbols(expression string) []string {
 	return strings.FieldsFunc(expression, splitNeg)
 }
@@ -31,11 +32,13 @@ func splitNeg(r rune) bool {
 	return r != '+' && r != '-' && r != '*' && r != '/'
 }
 
-func slicerParenthesis(expression string) []string {
+*/
+
+func slicerSymbols(expression string) []string {
 	result := []string{}
-	for _, e := range expression {
-		if e == '(' || e == ')' {
-			result = append(result, string(e))
+	for _, element := range expression {
+		if element == '+' || element == '-' || element == '*' || element == '/' {
+			result = append(result, string(element))
 		}
 	}
 	return result
@@ -116,10 +119,6 @@ func handleExpressionParenthesis(expression string, position int) string {
 }
 
 func handleParenthesis(expression string) string {
-	//parenthesis := slicerParenthesis(expression)
-
-	//fmt.Println(parenthesis)
-	//fmt.Println(expression)
 
 	open, openMax, lastOpenPosition, count := 0, 0, 0, len(expression)
 
