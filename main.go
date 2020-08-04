@@ -3,72 +3,19 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 func main() {
-	fmt.Println(basics("2+2*3+2"))
-}
-
-func slicerNumbers(expression string) []float64 {
-	match := strings.FieldsFunc(expression, split)
-	var result = []float64{}
-
-	for _, i := range match {
-		j, err := strconv.ParseFloat(i, 64)
-		if err != nil {
-			panic(err)
-		}
-		result = append(result, j)
-	}
-	return result
-}
-func split(r rune) bool {
-	return r == '+' || r == '-' || r == '*' || r == '/'
-}
-func slicerSymbols(expression string) []string {
-	return strings.FieldsFunc(expression, splitNeg)
-}
-func splitNeg(r rune) bool {
-	return r != '+' && r != '-' && r != '*' && r != '/'
-}
-func contains(s []string, e string) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
-	}
-	return false
-}
-
-func removeNumber(slice []float64, s int, t rune) []float64 {
-	if (s + 1) < len(slice) {
-		if t == '*' {
-			slice[s] *= slice[s+1]
-		}
-		if t == '/' {
-			slice[s] /= slice[s+1]
-		}
-
-		if t == '+' {
-			slice[s] += slice[s+1]
-		}
-		if t == '-' {
-			slice[s] -= slice[s+1]
-		}
-
-		return append(slice[:s+1], slice[s+2:]...)
-	}
-	return []float64{slice[0]}
-
-}
-
-func removeSymbols(slice []string, s int) []string {
-	return append(slice[:s], slice[s+1:]...)
-
+	expression := "2+3+(1+5)+4+(1+3+(2+3))+(3)+(2+(2))"
+	fmt.Println(expression + " = " + strconv.FormatFloat(basics(expression), 'f', -1, 64))
 }
 
 func basics(expression string) float64 {
+
+	for checkParenthesis(expression) {
+		expression = handleParenthesis(expression)
+	}
+
 	numbers := slicerNumbers(expression)
 	symbols := slicerSymbols(expression)
 	count := len(symbols)
@@ -78,13 +25,13 @@ func basics(expression string) float64 {
 		case "*":
 			numbers = removeNumber(numbers, i, '*')
 			symbols = removeSymbols(symbols, i)
-			count -= 1
-			i -= 1
+			count--
+			i--
 		case "/":
 			numbers = removeNumber(numbers, i, '/')
 			symbols = removeSymbols(symbols, i)
-			count -= 1
-			i -= 1
+			count--
+			i--
 		}
 	}
 
@@ -95,13 +42,13 @@ func basics(expression string) float64 {
 		case "+":
 			numbers = removeNumber(numbers, i, '+')
 			symbols = removeSymbols(symbols, i)
-			count -= 1
-			i -= 1
+			count--
+			i--
 		case "-":
 			numbers = removeNumber(numbers, i, '-')
 			symbols = removeSymbols(symbols, i)
-			count -= 1
-			i -= 1
+			count--
+			i--
 		}
 	}
 	return numbers[0]
