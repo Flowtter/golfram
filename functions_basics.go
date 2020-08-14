@@ -33,17 +33,6 @@ func split(r rune) bool {
 	return r == '+' || r == '-' || r == '*' || r == '/'
 }
 
-/*
-func slicerSymbols(expression string) []string {
-	return strings.FieldsFunc(expression, splitNeg)
-}
-
-func splitNeg(r rune) bool {
-	return r != '+' && r != '-' && r != '*' && r != '/'
-}
-
-*/
-
 func slicerSymbols(expression string) []string {
 	result := []string{}
 	for _, element := range expression {
