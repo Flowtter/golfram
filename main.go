@@ -1,13 +1,9 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	expression := "(1,3,x)*2"
-	fmt.Print(expression + " = ")
-	displayVector(basicsVectors(expression))
+	fmt.Println("main")
 }
 
 func basics(expression string) float64 {
@@ -62,15 +58,17 @@ func basicsVectors(expression string) []string {
 		vectors = append(vectors, vector)
 	}
 	symbols := slicerSymbols(expression)
-	numbers := slicerNumbers(expression)
+	numbers := slicerNumbersLetters(expression)
 
 	count := len(symbols)
 
-	for i := 0; len(symbols) != 0; i++ {
+	for i := 0; i < count && len(symbols) != 0; i++ {
+
 		switch symbols[i] {
 		case "*":
 			vectors = removeVector(vectors, i, '*', numbers)
 			symbols = removeSymbols(symbols, i)
+			_, numbers = numbers[0], numbers[1:]
 			count--
 			i--
 		}

@@ -19,6 +19,16 @@ func slicerNumbers(expression string) []float64 {
 	return result
 }
 
+func slicerNumbersLetters(expression string) []string {
+	match := strings.FieldsFunc(expression, split)
+	var result = []string{}
+
+	for _, i := range match {
+		result = append(result, i)
+	}
+	return result
+}
+
 func split(r rune) bool {
 	return r == '+' || r == '-' || r == '*' || r == '/'
 }

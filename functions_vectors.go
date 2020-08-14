@@ -123,8 +123,8 @@ func handleParenthesisVectors(expression string) ([]string, string) {
 	return handleExpressionParenthesisVectors(expression, lastOpenPosition)
 }
 
-func removeVector(vectors [][]string, s int, t rune, numbers []float64) [][]string {
-	if (s + 1) < len(vectors) {
+func removeVector(vectors [][]string, s int, t rune, numbers []string) [][]string {
+	if (s+1) < len(vectors) && t != '*' {
 		if t == '+' {
 			vectors[s] = addVectors(vectors[s], vectors[s+1])
 		} else if t == '-' {
@@ -133,11 +133,7 @@ func removeVector(vectors [][]string, s int, t rune, numbers []float64) [][]stri
 
 		return append(vectors[:s+1], vectors[s+2:]...)
 	}
+	vectors[s] = homothetie(vectors[s], numbers[0])
 
-	if t == '*' {
-		vectors[s] = homothetie(vectors[s], strconv.FormatFloat(numbers[0], 'f', -1, 64))
-		_, numbers = numbers[0], numbers[1:]
-	}
-
-	return [][]string{vectors[0]}
+	return vectors
 }
