@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math"
 	"strconv"
 	"strings"
 )
@@ -30,13 +31,13 @@ func slicerNumbersLetters(expression string) []string {
 }
 
 func split(r rune) bool {
-	return r == '+' || r == '-' || r == '*' || r == '/'
+	return r == '+' || r == '-' || r == '*' || r == '/' || r == '^'
 }
 
 func slicerSymbols(expression string) []string {
 	result := []string{}
 	for _, element := range expression {
-		if element == '+' || element == '-' || element == '*' || element == '/' {
+		if element == '+' || element == '-' || element == '*' || element == '/' || element == '^' {
 			result = append(result, string(element))
 		}
 	}
@@ -67,6 +68,8 @@ func removeNumber(slice []float64, s int, t rune) []float64 {
 	if (s + 1) < len(slice) {
 		if t == '*' {
 			slice[s] *= slice[s+1]
+		} else if t == '^' {
+			slice[s] = math.Pow(slice[s], slice[s+1])
 		} else if t == '/' {
 			slice[s] /= slice[s+1]
 		} else if t == '+' {

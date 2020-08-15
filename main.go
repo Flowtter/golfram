@@ -18,6 +18,18 @@ func basics(expression string) float64 {
 
 	for i := 0; i < count && len(symbols) != 0; i++ {
 		switch symbols[i] {
+		case "^":
+			numbers = removeNumber(numbers, i, '^')
+			symbols = removeSymbols(symbols, i)
+			count--
+			i--
+		}
+	}
+
+	count = len(symbols)
+
+	for i := 0; i < count && len(symbols) != 0; i++ {
+		switch symbols[i] {
 		case "*":
 			numbers = removeNumber(numbers, i, '*')
 			symbols = removeSymbols(symbols, i)
