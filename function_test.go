@@ -61,6 +61,7 @@ func TestSimplify(t *testing.T) {
 		{"y->y-2", '4', 2},
 		{"z->z*2", '3', 6},
 		{"z->z*2+4", '4', 12},
+		{"z->2*z^2+z+3", '4', 39},
 	}
 
 	for _, table := range tables {
