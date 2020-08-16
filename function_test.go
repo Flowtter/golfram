@@ -71,3 +71,28 @@ func TestSimplify(t *testing.T) {
 		}
 	}
 }
+
+func TestDegree(t *testing.T) {
+	tables := []struct {
+		expression string
+		result     int
+	}{
+
+		{"x->0", -1},
+		{"x->x", 1},
+		{"x->2", 0},
+		{"x->x^2", 2},
+		{"x->x^3+x", 3},
+		{"x->x^3+x^2+x+1", 3},
+		{"y->y^3+y^2+y+1", 3},
+		{"x->x^3+x^2+x^6+1", 6},
+		{"x->x^6+1^18", 6},
+	}
+
+	for _, table := range tables {
+		total := getDegree(table.expression)
+		if total != table.result {
+			t.Errorf("TestReplace of (%s) was incorrect, got: %d, want: %d.", table.expression, total, table.result)
+		}
+	}
+}
