@@ -29,14 +29,14 @@ func TestRecognize(t *testing.T) {
 func TestReplace(t *testing.T) {
 	tables := []struct {
 		expression string
-		element    rune
+		element    string
 		result     []string
 	}{
 
-		{"x->x+2", '2', []string{"x", "2+2"}},
-		{"y->y-2", '4', []string{"y", "4-2"}},
-		{"z->z*2", '3', []string{"z", "3*2"}},
-		{"z->z*2+4", '4', []string{"z", "4*2+4"}},
+		{"x->x+2", "2", []string{"x", "2+2"}},
+		{"y->y-2", "4", []string{"y", "4-2"}},
+		{"z->z*2", "3", []string{"z", "3*2"}},
+		{"z->z*2+4", "4", []string{"z", "4*2+4"}},
 	}
 
 	for _, table := range tables {
@@ -53,15 +53,16 @@ func TestReplace(t *testing.T) {
 func TestSimplify(t *testing.T) {
 	tables := []struct {
 		expression string
-		element    rune
+		element    string
 		result     float64
 	}{
 
-		{"x->x+2", '2', 4},
-		{"y->y-2", '4', 2},
-		{"z->z*2", '3', 6},
-		{"z->z*2+4", '4', 12},
-		{"z->2*z^2+z+3", '4', 39},
+		{"x->x+2", "2", 4},
+		{"y->y-2", "4", 2},
+		{"z->z*2", "3", 6},
+		{"z->z*2+4", "4", 12},
+		{"z->z*2", "11", 22},
+		{"z->2*z^2+z+3", "4", 39},
 	}
 
 	for _, table := range tables {

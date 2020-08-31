@@ -16,7 +16,7 @@ func recognizeFunc(expression string) []string {
 	return function
 }
 
-func replaceFunc(expression string, element rune) []string {
+func replaceFunc(expression string, element string) []string {
 	function := recognizeFunc(expression)
 	count := len(function[1])
 
@@ -25,15 +25,28 @@ func replaceFunc(expression string, element rune) []string {
 
 	r = []rune(function[1])
 
+	array := []string{}
+
 	for i := 0; i < count; i++ {
-		if r[i] == t {
-			r[i] = element
+		array = append(array, string(r[i]))
+	}
+
+	for i := 0; i < count; i++ {
+		if array[i] == string(t) {
+			array[i] = element
 		}
 	}
-	return []string{function[0], string(r)}
+
+	result := ""
+
+	for i := 0; i < count; i++ {
+		result += array[i]
+	}
+
+	return []string{function[0], result}
 }
 
-func simplifyFunc(expression string, element rune) float64 {
+func simplifyFunc(expression string, element string) float64 {
 	function := replaceFunc(expression, element)
 	return basics(function[1])
 }

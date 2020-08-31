@@ -12,12 +12,12 @@ func displayVector(vectors []string) {
 		return
 	}
 	count--
-	fmt.Print("( ")
+	fmt.Print("(")
 	for i := 0; i < count; i++ {
 		fmt.Print(vectors[i] + ", ")
 	}
 	fmt.Print(vectors[count])
-	fmt.Println(" )")
+	fmt.Println(")")
 }
 
 func splitVector(expression string) []string {
