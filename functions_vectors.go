@@ -20,6 +20,22 @@ func displayVector(vectors []string) {
 	fmt.Println(")")
 }
 
+func returnVector(vectors []string) string {
+	count := len(vectors)
+	result := ""
+	if count == 0 {
+		return ""
+	}
+	count--
+	result += "("
+	for i := 0; i < count; i++ {
+		result += vectors[i] + ", "
+	}
+	result += vectors[count]
+	result += ")"
+	return result
+}
+
 func splitVector(expression string) []string {
 	expression = strings.Replace(expression, "(", "", -1)
 	expression = strings.Replace(expression, ")", "", -1)

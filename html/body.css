@@ -1,27 +1,119 @@
 :root {
-    --red: #ff4654;
-    --blue: #111723;
+    --yellow: #ffc000;
+    --blue: #133370;
+    --blue-invert: #eccc8f;
+    --orange: #ec640f;
     --snow: #fafafa;
+    --light-blue: #6068B2;
+    --bubble_size: 80px;
+    --bubble_pos_ref: 0.4cm;
+    --size: 200px;
 }
-html, body {
-    background-color: var(--red);
+@font-face {
+    font-family: Nexa;
+    src: url(../assets/fonts/Fontfabric\ -\ Nexa.otf);
+}
+.body, html {
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+    text-transform: uppercase;
     overflow: hidden;
     margin: 0px;
-    height: 100%;
+    font-family: Nexa;
+
+    
+    background-color: var(--blue);
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.box{
+  width: 300px;
+  padding: 40px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
 }
 
-a:link {
-    text-decoration: none;
+.main {
+    width: 300px;
+    padding: 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
 }
 
-a:visited {
-    text-decoration: none;
+
+.box h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.box input[type = "text"],.box input[type = "password"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid var(--light-blue);
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+  width: 280px;
+  border-color: var(--orange);
+}
+.box input[type = "submit"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid var(--orange);
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type = "submit"]:hover{
+  background: var(--orange);
 }
 
-a:hover {
-    text-decoration: none;
+.main {
+    color: var(--yellow);
 }
 
-a:active {
-    text-decoration: none;
+.myButton {
+	background: var(--light-blue);
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:var(--snow);
+	font-family:Arial;
+	font-size:20px;
+	padding:4px 13px;
+	text-decoration:none;
+    transition: 0.3s;
+}
+.myButton:hover {
+	background: var(--blue);
+	background-color:#415989;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
 }

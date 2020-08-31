@@ -54,7 +54,38 @@ func request(expression string) string {
 	text := strings.Replace(expression, "\n", "", -1)
 	parse := strings.Fields(text)
 
-	return strconv.FormatFloat(basics(parse[1]), 'f', -1, 64)
+	if len(parse) == 0 {
+		return "Please parse an expression"
+	} else if len(parse) == 1 {
+		if parse[0] == "help" || parse[0] == "h" {
+			return `Welcome to Golfram \n
+			basic, b, and an expression to solve it. Example : \" basic 2+3/4*5 \" \n
+			vector, v, to work on vector. Example : \" vector (2,y)*z+(x,6)*2 \" \n
+			degree, d, to get the degree of an expression. Example : \" degree x->x^3+x^2+x+1 \" \n
+			function, f, to get the result of the function with a parameter. Example : \" function x->x+2 2 \" \n`
+		} else {
+			return "Please parse an expression"
+		}
+	} else if len(parse) == 2 {
+		if parse[0] == "basic" || parse[0] == "b" {
+			return strconv.FormatFloat(basics(parse[1]), 'f', -1, 64)
+		} else if parse[0] == "vector" || parse[0] == "v" {
+			return returnVector(basicsVectors(parse[1]))
+		} else if parse[0] == "degree" || parse[0] == "d" {
+			return strconv.Itoa(getDegree(parse[1]))
+		} else {
+			return "Please parse a correct argument"
+		}
+
+	} else if len(parse) == 3 {
+		if parse[0] == "function" || parse[0] == "f" {
+			return strconv.FormatFloat(simplifyFunc(parse[1], parse[2]), 'f', -1, 64)
+		} else {
+			return "Please parse correct arguments"
+		}
+
+	}
+	return "Please parse an expression (2 arguments max)"
 }
 
 func basics(expression string) float64 {

@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="body.css">
-    <link rel="stylesheet" href="navigation.css">
     <title>Golfram</title>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -11,12 +10,12 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="nav-element-research">
+    <div>
+    <div class="box">
         <input type="text" id="fname" name="fname">
-        <button onclick="request()">research</button>
+        <button onclick="request()" class="myButton">Go</button>
     </div>
-    <div id="text">hello</div>
-
+    <div id="text" class="main"></div>
+    </div>
 </body>
-
 </html>

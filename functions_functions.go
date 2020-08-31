@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -11,7 +11,8 @@ func recognizeFunc(expression string) []string {
 	function := strings.Split(expression, "->")
 
 	if len(function) != 2 {
-		log.Fatal("Function recognize: bad input")
+		fmt.Println("Function recognize: bad input")
+		return []string{"x", "0"}
 	}
 	return function
 }
