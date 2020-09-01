@@ -60,16 +60,18 @@ func request(expression string) string {
 	if len(parse) == 0 {
 		return "Please parse an expression"
 	} else if len(parse) == 1 {
-		if parse[0] == "help" || parse[0] == "h" {
-			return `Welcome to Golfram \n
-			To parse an expression, use semi-column. Space will be erased by Golfram, use them if it can help you. (2 + 3) == (2+3)
-			basic, b, and an expression to solve it. Example : \" basic: 2 + 3 / 4 * 5 \" \n
-			vector, v, to work on vectors. Example : \" vector : (2,y)*z+(x,6)*2 \" \n
-			degree, d, to get the degree of an expression. Example : \" degree : x->x^3+x^2+x+1 \" \n
-			function, f, to get the result of the function with a parameter. Example : \" function : x->x+2 : 2 \" \n`
-		} else {
-			return "Please parse an expression"
-		}
+		/*
+			if parse[0] == "help" || parse[0] == "h" {
+				return `Welcome to Golfram \n
+				To parse an expression, use semicolons. Space will be erased by Golfram, use them if it can help you. (2 + 3) == (2+3)
+				basic, b, and an expression to solve it. Example : \" basic: 2 + 3 / 4 * 5 \" \n
+				vector, v, to work on vectors. Example : \" vector : (2,y)*z+(x,6)*2 \" \n
+				degree, d, to get the degree of an expression. Example : \" degree : x->x^3+x^2+x+1 \" \n
+				function, f, to get the result of the function with a parameter. Example : \" function : x->x+2 : 2 \" \n`
+			} else {
+		*/
+		return "Please parse an expression"
+		//}
 	} else if len(parse) == 2 {
 		if parse[0] == "basic" || parse[0] == "b" {
 			return strconv.FormatFloat(basics(parse[1]), 'f', -1, 64)

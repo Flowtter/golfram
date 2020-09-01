@@ -9,20 +9,13 @@
     --bubble_pos_ref: 0.4cm;
     --size: 200px;
 }
-@font-face {
-    font-family: Nexa;
-    src: url(../assets/fonts/Fontfabric\ -\ Nexa.otf);
-}
+
 .body, html {
     width: 100%;
     height: 100%;
-    font-size: 50px;
     text-transform: uppercase;
     overflow: hidden;
     margin: 0px;
-    font-family: Nexa;
-
-    
     background-color: var(--blue);
 }
 body{
@@ -31,7 +24,8 @@ body{
     font-family: sans-serif;
 }
 .box{
-  width: 300px;
+  width: 100%;
+  height: 20%;
   padding: 40px;
   position: fixed;
   top: 20%;
@@ -40,14 +34,18 @@ body{
   text-align: center;
 }
 
-.main {
-    width: 300px;
+.main-text {
+    width: 80%;
+    height: 40%;
     padding: 40px;
-    position: fixed;
-    top: 50%;
+    position: absolute;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,110%);
     text-align: center;
+    background-color:#415989;
+    border-radius: 40px;
+    font-size: 350%;
+    color: var(--yellow)
 }
 
 
@@ -56,7 +54,7 @@ body{
   text-transform: uppercase;
   font-weight: 500;
 }
-.box input[type = "text"],.box input[type = "password"]{
+.box input[type = "text"]{
   border:0;
   background: none;
   display: block;
@@ -64,32 +62,16 @@ body{
   text-align: center;
   border: 2px solid var(--light-blue);
   padding: 14px 10px;
-  width: 200px;
+  width: 550px;
   outline: none;
   color: white;
-  border-radius: 24px;
+  border-radius: 40px;
   transition: 0.25s;
+  font-size: 25px;
 }
-.box input[type = "text"]:focus,.box input[type = "password"]:focus{
-  width: 280px;
+.box input[type = "text"]:focus{
+  width: 750px;
   border-color: var(--orange);
-}
-.box input[type = "submit"]{
-  border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid var(--orange);
-  padding: 14px 40px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-  cursor: pointer;
-}
-.box input[type = "submit"]:hover{
-  background: var(--orange);
 }
 
 .main {
@@ -107,13 +89,25 @@ body{
 	font-size:20px;
 	padding:4px 13px;
 	text-decoration:none;
-    transition: 0.3s;
+  transition: 0.3s;
+  outline: 0
 }
 .myButton:hover {
 	background: var(--blue);
-	background-color:#415989;
+  background-color:#415989;
+  outline: 0
 }
 .myButton:active {
 	position:relative;
-	top:1px;
+  top:1px;
+  outline: 0
+}
+
+.yellow {
+  color : var(--yellow);
+}
+
+.title {
+  font-size: 50px;
+  color : var(--yellow);
 }
