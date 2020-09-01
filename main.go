@@ -37,6 +37,7 @@ func main() {
 	r := gin.Default()
 	r.GET("/request/:name", func(c *gin.Context) {
 		name := c.Param("name")
+		name = strings.ReplaceAll(name, "§", "/")
 		requested := request(name)
 		response(c, http.StatusOK, nil, requested)
 	})

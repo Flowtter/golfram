@@ -1,7 +1,7 @@
 function request() {
     var name = document.getElementById("fname");
-
-    axios.get("/request/" + name.value)
+    var str = name.value.split("/").join("§");
+    axios.get("/request/" + str)
     .then(function (reponse){changeText(reponse.data.payload);})
     //.catch
 }
