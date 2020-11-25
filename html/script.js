@@ -12,9 +12,9 @@ function changeText(json) {
 }
 
 function help() {
-    window.open("https://github.com/Naexys/golfram/blob/master/README.md")
+    window.open("https://github.com/Flowtter/golfram/blob/master/README.md")
 }
 
 function contact() {
-    window.open("https://naexys.netlify.app/english/contact.html")
+    window.open("https://flowtter.netlify.app/english/contact.html")
 }
