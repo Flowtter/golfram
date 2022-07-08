@@ -2,8 +2,8 @@ function request() {
     var name = document.getElementById("fname");
     var str = name.value.split("/").join("§");
     axios.get("/request/" + str)
-    .then(function (reponse){changeText(reponse.data.payload);})
-    //.catch
+        .then(function(reponse) { changeText(reponse.data.payload); })
+        //.catch
 }
 
 function changeText(json) {
@@ -16,5 +16,5 @@ function help() {
 }
 
 function contact() {
-    window.open("https://flowtter.netlify.app/english/contact.html")
+    window.open("https://briceparent.com/")
 }
